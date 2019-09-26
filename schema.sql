@@ -1,8 +1,11 @@
 CREATE TABLE accounts (
-	id int NOT NULL,
+	id varchar(13) NOT NULL,
 	email varchar(255) NOT NULL,
 	password varchar(20) NOT NULL,
-	PRIMARY KEY(email),
+	PRIMARY KEY(email)
+
+	)
+
 	PRIMARY KEY(password)
 
 	)

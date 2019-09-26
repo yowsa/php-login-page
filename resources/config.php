@@ -1,10 +1,15 @@
 <?php
 
-$config [
+$config = [
 	"db" => [
-		"dbname" => "logincredentialsdb",
+		"dbname" => "logindb",
 		"username" => "root",
 		"password" => "",
 		"host" => "localhost",
 	]
 ];
+
+
+
+
+?>

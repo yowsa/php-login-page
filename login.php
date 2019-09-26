@@ -16,6 +16,10 @@
 			
 		});
 
+		$("#button").onclick(() => alert("hejsan"));
+
+
+
 
 
 
@@ -28,18 +32,12 @@
 	<form method="post"> 
 		Email: <input id="email" type="email" name="email"><p>
 		Password: <input type="password" name="password">
-		<input type="submit" name="log in">
+		<input type="submit" id="button" name="log in">
 	</form>
 	<div id="lekdiv">: </div>
 </div>
 
 <a href="create_user.php">Create User</a>
-
-
-<?php
-echo 1 + 2; ?>
-
-
 
 
 
@@ -53,8 +51,4 @@ validateEmail("josefin@fundin.com");
 
 
 
-function getId(){
-	return uniqid();
-}
-?>
 
