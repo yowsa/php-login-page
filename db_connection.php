@@ -13,7 +13,6 @@ class DataBaseManager {
 
 	function getConnection(){
 		$connection = new mysqli($this->dbhost, $this->dbusername, $this->dbpassword, $this->dbname) or die ("Connection failed \n". $connection -> error);
-		echo "Connected Successfully \n";
 		return $connection;
 	}
 
