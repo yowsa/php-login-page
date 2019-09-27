@@ -7,6 +7,7 @@
 </head>
 
 <?php 
+require_once "../base.php";
 
 echo "lets create a user shall we" ?>
 
