@@ -1,11 +1,12 @@
 <?php
 
+
 $config = [
 	"db" => [
 		"dbname" => "logindb",
-		"username" => "root",
-		"password" => "",
-		"host" => "localhost",
+		"dbusername" => "root",
+		"dbpassword" => "",
+		"dbhost" => "localhost",
 	]
 ];
 
