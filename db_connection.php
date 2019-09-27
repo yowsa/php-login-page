@@ -13,7 +13,7 @@ class DataBaseManager {
 
 	function getConnection(){
 		$connection = new mysqli($this->dbhost, $this->dbusername, $this->dbpassword, $this->dbname) or die ("Connection failed \n". $connection -> error);
-		echo "Connected Successfully";
+		echo "Connected Successfully \n";
 		return $connection;
 	}
 
@@ -55,35 +55,46 @@ class AccountsTable {
 
 
 	function addUser($email, $password){
-	$id = $this->getId();
+		$id = $this->getId();
 	// TODO: Replace with msqli
-	$sql_query = "INSERT INTO accounts (id, email, password) VALUES ('$id', '$email', '$password')";
-	$this->dbQuery($sql_query);
-
-
-}
-
-
-
-}
-
-
-
-
-
-
-
-
-
-
-function checkIfEmailExists($connection, $email){
-	$sql_input = "SELECT email FROM accounts WHERE email = '$email'";
-	if ($sql_result = $connection -> query($sql_input)) {
-		return True;
+		$sql_query = "INSERT INTO accounts (id, email, password) VALUES ('$id', '$email', '$password')";
+		$this->dbQuery($sql_query);
 	}
-	return False;
-	
+
+
+	function checkIfEmailExists($email){
+	// TODO: Replace with msqli
+		$sql_query = "SELECT email FROM accounts WHERE email = '$email'";
+		$sql_result = $this->connection -> query($sql_query);
+		if ($sql_result->num_rows){
+			return True;
+		}
+		return False;
+	}
+
+
+	function checkIfPasswordMatches($email, $password){
+		$sql_query = "SELECT * FROM accounts WHERE email = '$email' AND password = '$password'";
+		$sql_result = $this->connection -> query($sql_query);
+		if ($sql_result->num_rows){
+			return True;
+		}
+		return False;
+	}
+
+
+
+
 }
+
+
+
+
+
+
+
+
+
 
 function createSecurePassword($password){
 	return password_hash($password, PASSWORD_DEFAULT);
@@ -101,6 +112,10 @@ function verifyPassword($password){
 
 $database_manager = new DataBaseManager();
 $accounts_table = new AccountsTable($database_manager);
+
+
+
+
 
 //$accounts_table->addUser("heeeeeeej@sveej.dej", "jagarattlosenord");
 
