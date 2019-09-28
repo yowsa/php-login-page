@@ -10,13 +10,12 @@ if ($_POST){
 		json_responder(True);
 	} else {
 		json_responder(False, "Login failed! The email or password you entered is incorrect. Please try again.");
-		
 	}
 
 	exit();	
 }
 
-
+$page_title = 'Login';
 require_once "../resources/templates/header.php" 
 ?>
 
@@ -25,8 +24,8 @@ require_once "../resources/templates/header.php"
 
 <div> 
 	<form id="login_form" method="post"> 
-		<p>Email: <input id="email" type="email" name="email"></p>
-		<p>Password: <input type="password" name="password"></p>
+		<p>Email: <input id="email" type="email" name="email" autocomplete="email"></p>
+		<p>Password: <input type="password" name="password" autocomplete="current-password"></p>
 		<p><input type="submit" id="login_button" value="Log In"></p>
 	</form>
 </div>

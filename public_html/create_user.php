@@ -30,6 +30,7 @@ if ($_POST){
 }
 
 
+$page_title = 'Create New User';
 require_once "../resources/templates/header.php" 
 ?>
 
