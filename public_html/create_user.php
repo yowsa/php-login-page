@@ -8,7 +8,7 @@ if ($_POST){
 		//$secure_password = $password_security->createSecurePassword($_POST["password"]);
 		$accounts_table->addUser($_POST["email"], $_POST["password"]);
 		//TODO: Create json response function that creates an array and takes a message
-		echo json_responder(True, "User created. You are being redirected to the login page.");
+		json_responder(True, "User created. You are being redirected to the login page.");
 
 		//$user_creation_sussessful = [
 		//	"success" => True
@@ -17,7 +17,7 @@ if ($_POST){
 		//echo json_encode($user_creation_sussessful);
 		
 	} else {
-		echo json_responder(False, "Your passwords didn't match. Please try again");
+		json_responder(False, "Your passwords didn't match. Please try again");
 
 
 

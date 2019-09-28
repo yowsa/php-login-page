@@ -6,7 +6,7 @@ function json_responder($bool, $response_message){
 		];
 
 	header('Content-Type: application/json');
-	return json_encode($response);
+	echo json_encode($response);
 
 }
 
