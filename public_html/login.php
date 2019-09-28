@@ -1,7 +1,6 @@
 <?php
-require_once "../db_connection.php";
-require_once "../base.php";
-
+require_once "../resources/accounts_handler.php";
+require_once "../resources/base.php";
 
 if ($_POST){
 	$email = strtolower($_POST["email"]);
@@ -34,8 +33,6 @@ require_once "../resources/templates/header.php"
 <p><div id="login_message"></div></p>
 
 <p><a href="create_user.php">Create User</a></p>
-
-
 
 
 

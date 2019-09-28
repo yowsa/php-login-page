@@ -1,6 +1,6 @@
 <?php
-require_once "../base.php";
-require_once "../check_login.php" 
+require_once "../resources/base.php";
+require_once "../resources/check_login.php" 
 
 ?>
 
@@ -9,4 +9,4 @@ require_once "../check_login.php"
 
 
 
-<a href="../logout.php">Log Out</a>
+<a href="../resources/logout.php">Log Out</a>

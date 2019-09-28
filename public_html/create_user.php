@@ -1,6 +1,6 @@
 <?php 
-require_once "../base.php";
-require_once "../db_connection.php";
+require_once "../resources/base.php";
+require_once "../resources/accounts_handler.php";
 
 if ($_POST){
 	$email = strtolower($_POST["email"]);
