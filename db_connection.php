@@ -17,8 +17,6 @@ class DataBaseManager {
 	}
 
 
-
-
 	//function closeConnection($connection){
 	//$connection -> close();
 //}
@@ -55,8 +53,9 @@ class AccountsTable {
 
 	function addUser($email, $password){
 		$id = $this->getId();
+		$hashed_password = password_hash($password, PASSWORD_BCRYPT);
 	// TODO: Replace with msqli
-		$sql_query = "INSERT INTO accounts (id, email, password) VALUES ('$id', '$email', '$password')";
+		$sql_query = "INSERT INTO accounts (id, email, password) VALUES ('$id', '$email', '$hashed_password')";
 		$this->dbQuery($sql_query);
 	}
 
@@ -92,13 +91,6 @@ class AccountsTable {
 
 		//error_log(print_r($row["password"], True));
 		
-
-
-
-	//	if ($sql_result->num_rows){
-	//		return True;
-	//	}
-	//	return False;
 	}
 
 
@@ -114,7 +106,7 @@ class PasswordSecurity {
 		return password_hash($password, PASSWORD_BCRYPT);
 	}
 
-
+/*
 	function verifyPassword($password, $hashed_password){
 		if (password_verify($password, $hashed_password)) {
 			return True;
@@ -125,7 +117,7 @@ class PasswordSecurity {
 
 	}
 
-
+*/
 
 
 
