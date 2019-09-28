@@ -7,7 +7,8 @@ $config = [
 		"dbusername" => "root",
 		"dbpassword" => "",
 		"dbhost" => "localhost",
-	]
+	],
+	"password_length_req" => 5,
 ];
 
 

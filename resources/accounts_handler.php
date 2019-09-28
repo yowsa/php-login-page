@@ -1,6 +1,6 @@
 <?php
 require_once "db_connection.php";
-
+require_once "config.php";
 
 class AccountsTable {
 
@@ -36,13 +36,6 @@ class AccountsTable {
 		return $email_details["email"] == $email;
 	}
 
-
-
-	function validateEmail($email){
-		return filter_var($email, FILTER_VALIDATE_EMAIL);
-	}
-
-
 	function checkIfPasswordMatches($email, $password){
 		$statement = $this->connection->prepare("SELECT password FROM ACCOUNTS WHERE email = ?");
 		$statement->bind_param("s", $email);
@@ -59,6 +52,28 @@ class AccountsTable {
 
 }
 
+
+class AccountUtilities {
+	function __construct(){
+		global $config;
+		$this->config = $config;
+	}
+
+	function validateEmail($email){
+		return filter_var($email, FILTER_VALIDATE_EMAIL);
+	}
+
+	function validatePasswordLength($password){
+		return strlen($password) >= $this->config["password_length_req"];
+	}
+
+
+}
+
+
+
+
 $accounts_table = new AccountsTable($database_manager);
+$accounts_utilities = new AccountUtilities();
 
 ?>
