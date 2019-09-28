@@ -25,7 +25,7 @@ if ($_POST){
 		json_responder(False, "Your passwords didn't match. Please try again");
 
 	} else {
-		$accounts_table->addUser($email, $password);
+		$accounts_table->addUser($email, $password, $name);
 		json_responder(True, "User created. You are being redirected to the login page.");
 	}
 

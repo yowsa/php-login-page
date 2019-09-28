@@ -13,12 +13,12 @@ class AccountsTable {
 		return $this->connection -> query($sql_query);
 	}
 
-	function addUser($email, $password){
+	function addUser($email, $password, $name){
 		$id = uniqid();
 		$hashed_password = password_hash($password, PASSWORD_BCRYPT);
 		$statement = $this->connection->prepare(
-			"INSERT INTO accounts (id, email, password) VALUES (?, ?, ?)");
-		$statement->bind_param("sss", $id, $email, $hashed_password);
+			"INSERT INTO accounts (id, email, password, name) VALUES (?, ?, ?, ?)");
+		$statement->bind_param("ssss", $id, $email, $hashed_password, $name);
 		$statement->execute();
 	}
 
@@ -47,6 +47,11 @@ class AccountsTable {
 		$hashed_password = $password_details["password"];
 		return password_verify($password, $hashed_password);
 	}
+
+
+
+
+
 }
 
 
