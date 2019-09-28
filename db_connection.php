@@ -26,30 +26,18 @@ class DataBaseManager {
 
 class AccountsTable {
 
-
 	function __construct($database_manager){
 		$this->database_manager = $database_manager;
 		$this->connection = $this->database_manager->getConnection();
-
 	}
-
-
 
 	function dbQuery($sql_query){
-		$this->connection -> query($sql_query);
+		return $this->connection -> query($sql_query);
 	}
-
-
-	function dbSelect($sql_query){
-
-
-	}
-
 
 	function getId(){
 		return uniqid();
 	}
-
 
 	function addUser($email, $password){
 		$id = $this->getId();
@@ -73,38 +61,26 @@ class AccountsTable {
 */
 
 	function checkIfPasswordMatches($email, $password){
-		//$sql_query = "SELECT * FROM accounts WHERE email = '$email' AND password = '$password'";
-		//$sql_result = $this->connection -> query($sql_query);
-
-		// TODO: please mysqli with safe version BOBBY TABLES
-
-		$sql_query2 = "SELECT * FROM ACCOUNTS";
-		$sql_result2 = $this->connection -> query($sql_query2);
-		$row =  $sql_result2 -> fetch_array();
-		$hashed_password = $row["password"];
-		if (password_verify($password, $hashed_password)) {
-			return True;
-		} else {
+		$statement = $this->connection->prepare("SELECT password FROM ACCOUNTS WHERE email = ?");
+		$statement->bind_param("s", $email);
+		$statement->execute();
+		$db_select_result = $statement->get_result();
+		$password_details =  $db_select_result -> fetch_array();
+		if ($password_details === NULL){
 			return False;
-		};
+		}
+		$hashed_password = $password_details["password"];
+		return password_verify($password, $hashed_password);
 
-
-		//error_log(print_r($row["password"], True));
-		
 	}
-
-
 
 }
 
 
 
+
 $database_manager = new DataBaseManager();
 $accounts_table = new AccountsTable($database_manager);
-
-
-
-
 
 
 
