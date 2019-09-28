@@ -44,11 +44,11 @@ require_once "../resources/templates/header.php"
 
 <div> 
 	<form id="create_user_form" method="post"> 
-		<p><label for="name">Name:</label><input type="name" name="name" autocomplete="name"></p>
-		<p><label for="email">Email:</label> <input type="email" name="email" autocomplete="email"></p>
-		<p><label for="password">Password:</label><input type="password" name="password" autocomplete="new-password"></p>
-		<p><label for="confirm_password">Confirm Password:</label><input type="password" name="confirm_password" autocomplete="new-password"></p>
-		<p><input type="submit" id="create_user_button" value="Create User"></p>
+		<p><label for="name" class="col-sm-2 col-form-label col-form-label-lg">Name:</label><input class="form-control form-control-lg" type="name" name="name" autocomplete="name"></p>
+		<p><label for="email" class="col-sm-2 col-form-label col-form-label-lg">Email:</label> <input class="form-control form-control-lg" type="email" name="email" autocomplete="email"></p>
+		<p><label for="password" class="col-sm-2 col-form-label col-form-label-lg">Password:</label><input class="form-control form-control-lg" type="password" name="password" autocomplete="new-password"></p>
+		<p><label for="confirm_password" class="col-sm-2 col-form-label col-form-label-lg">Confirm Password:</label><input class="form-control form-control-lg" type="password" name="confirm_password" autocomplete="new-password"></p>
+		<p><input type="submit" class="btn btn-primary btn-lg btn-block" id="create_user_button" value="Create User"></p>
 	</form>
 </div>
 <div id="create_user_message"></div>

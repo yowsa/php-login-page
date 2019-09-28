@@ -1,5 +1,12 @@
 $(function(){
+	function alertMessage($message){
+		$("<div class='alert alert-danger fade show'>"+ 
+			"<button type='button' class='close' data-dismiss='alert' aria-label='Close'>" +
+			"<span aria-hidden='true'>&times;</span></button>"+
+			"<div class='error_message'></div></div>").appendTo("body");
+		$(".error_message").text($message);
 
+	}
 
 	$("#create_user_button").click(function(event){
 		event.preventDefault();
@@ -32,9 +39,9 @@ $(function(){
 			if (data.success){
 				window.location.href = 'logged_in.php';
 			} else if (!data.success){
-				$("#login_message").text(data.message);
+				alertMessage(data.message);
 			} else {
-				$("#login_message").text("Something went wrong, please try again.");
+				alertMessage("Something went wrong, please try again.");
 			}
 		});
 
