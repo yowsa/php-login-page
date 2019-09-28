@@ -44,10 +44,10 @@ require_once "../resources/templates/header.php"
 
 <div> 
 	<form id="create_user_form" method="post"> 
-		<p><label>Name:</label><input type="name" name="name" autocomplete="name"></p>
-		<p><label>Email:</label> <input type="email" name="email" autocomplete="email"></p>
-		<p><label>Password:</label><input type="password" name="password" autocomplete="new-password"></p>
-		<p><label>Confirm Password:</label><input type="password" name="confirm_password" autocomplete="new-password"></p>
+		<p><label for="name">Name:</label><input type="name" name="name" autocomplete="name"></p>
+		<p><label for="email">Email:</label> <input type="email" name="email" autocomplete="email"></p>
+		<p><label for="password">Password:</label><input type="password" name="password" autocomplete="new-password"></p>
+		<p><label for="confirm_password">Confirm Password:</label><input type="password" name="confirm_password" autocomplete="new-password"></p>
 		<p><input type="submit" id="create_user_button" value="Create User"></p>
 	</form>
 </div>
