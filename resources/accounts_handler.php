@@ -16,6 +16,7 @@ class AccountsTable {
 	function addUser($email, $password, $name){
 		$id = uniqid();
 		$hashed_password = password_hash($password, PASSWORD_BCRYPT);
+		$name = htmlspecialchars($name);
 		$statement = $this->connection->prepare(
 			"INSERT INTO accounts (id, email, password, name) VALUES (?, ?, ?, ?)");
 		$statement->bind_param("ssss", $id, $email, $hashed_password, $name);
