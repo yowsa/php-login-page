@@ -1,16 +1,7 @@
 CREATE TABLE accounts (
-	id varchar(13) NOT NULL,
+	id char(13) NOT NULL PRIMARY KEY,
 	email varchar(255) NOT NULL,
-	password varchar(20) NOT NULL,
-	PRIMARY KEY(email)
-
-	)
-
-	PRIMARY KEY(password)
-
-	)
-
-
-- specify characters accepted
-- length of password
-- char el varchar
+	password char(60) NOT NULL,
+	name varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL
+	);
+ALTER TABLE accounts ADD KEY(email);
