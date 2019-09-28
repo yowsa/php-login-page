@@ -6,6 +6,10 @@ if ($_POST){
 	$email = strtolower($_POST["email"]);
 	$password = $_POST["password"];
 	$confim_password = $_POST["confirm_password"];
+	if ($accounts_table->checkIfEmailExists($email)){
+		json_responder(False, "This email is already associated with an existing account.");
+		exit();
+	}
 	if (!$accounts_table->validateEmail($email)){
 		json_responder(False, "Please enter a valid email address.");
 		exit();

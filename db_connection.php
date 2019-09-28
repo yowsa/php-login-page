@@ -47,25 +47,26 @@ class AccountsTable {
 		$statement->execute();
 	}
 
-/*
+
 	function checkIfEmailExists($email){
-	// TODO: Replace with msqli
-		$sql_query = "SELECT email FROM accounts WHERE email = '$email'";
-		$sql_result = $this->connection -> query($sql_query);
-		if ($sql_result->num_rows){
-			return True;
+		$statement = $this->connection->prepare("SELECT email FROM accounts WHERE email = ?");
+		$statement->bind_param("s", $email);
+		$statement->execute();
+		$db_select_result = $statement->get_result();
+		$email_details =  $db_select_result -> fetch_array();
+		if ($email_details === NULL){
+			return False;
 		}
-		return False;
+		error_log(print_r($email_details["email"], true));
+		return $email_details["email"] == $email;
 	}
 
-*/
+
 
 	function validateEmail($email){
 		return filter_var($email, FILTER_VALIDATE_EMAIL);
 	}
 
-//validateEmail("josefin.com");
-//validateEmail("josefin@fundin.com");
 
 	function checkIfPasswordMatches($email, $password){
 		$statement = $this->connection->prepare("SELECT password FROM ACCOUNTS WHERE email = ?");
