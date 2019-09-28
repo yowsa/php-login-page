@@ -60,7 +60,7 @@ class AccountsTable {
 		$this->dbQuery($sql_query);
 	}
 
-
+/*
 	function checkIfEmailExists($email){
 	// TODO: Replace with msqli
 		$sql_query = "SELECT email FROM accounts WHERE email = '$email'";
@@ -71,19 +71,65 @@ class AccountsTable {
 		return False;
 	}
 
+*/
 
 	function checkIfPasswordMatches($email, $password){
-		$sql_query = "SELECT * FROM accounts WHERE email = '$email' AND password = '$password'";
-		$sql_result = $this->connection -> query($sql_query);
-		if ($sql_result->num_rows){
+		//$sql_query = "SELECT * FROM accounts WHERE email = '$email' AND password = '$password'";
+		//$sql_result = $this->connection -> query($sql_query);
+
+		// TODO: please mysqli with safe version BOBBY TABLES
+
+		$sql_query2 = "SELECT * FROM ACCOUNTS";
+		$sql_result2 = $this->connection -> query($sql_query2);
+		$row =  $sql_result2 -> fetch_array();
+		$hashed_password = $row["password"];
+		if (password_verify($password, $hashed_password)) {
 			return True;
-		}
-		return False;
+		} else {
+			return False;
+		};
+
+
+		//error_log(print_r($row["password"], True));
+		
+
+
+
+	//	if ($sql_result->num_rows){
+	//		return True;
+	//	}
+	//	return False;
+	}
+
+
+
+}
+
+
+
+
+class PasswordSecurity {
+
+	function createSecurePassword($password){
+		return password_hash($password, PASSWORD_BCRYPT);
+	}
+
+
+	function verifyPassword($password, $hashed_password){
+		if (password_verify($password, $hashed_password)) {
+			return True;
+		} else {
+			return False;
+		};
+
+
 	}
 
 
 
 
+
+
 }
 
 
@@ -91,18 +137,6 @@ class AccountsTable {
 
 
 
-
-
-
-
-function createSecurePassword($password){
-	return password_hash($password, PASSWORD_DEFAULT);
-}
-
-
-function verifyPassword($password){
-
-}
 
 
 
@@ -111,28 +145,17 @@ function verifyPassword($password){
 
 $database_manager = new DataBaseManager();
 $accounts_table = new AccountsTable($database_manager);
+$password_security = new PasswordSecurity();
 
 
 
 
 
-//$accounts_table->addUser("heeeeeeej@sveej.dej", "jagarattlosenord");
-
-
-
-
-//addUser($connection, "jossssss@hej.com", "hej");
-//echo checkIfEmailExists($connection, "jos@fssundin.com");
 //createSecurePassword("hejsan");
 
-/*
 
-if (password_verify("hallaaa", createSecurePassword("hejsan"))) {
-	echo "YASSSS that's the right password";
-} else {
-	echo "Nahhhhh bro that didn't work";
-};
 
-*/
+
+
 
 ?>
