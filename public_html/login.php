@@ -25,8 +25,8 @@ require_once "../resources/templates/header.php"
 
 <div> 
 	<form id="login_form" method="post"> 
-		<p>Email: <input id="email" type="email" name="email" autocomplete="email"></p>
-		<p>Password: <input type="password" name="password" autocomplete="current-password"></p>
+		<p><label>Email:</label><input id="email" type="email" name="email" autocomplete="email"></p>
+		<p><label>Password:</label><input type="password" name="password" autocomplete="current-password"></p>
 		<p><input type="submit" id="login_button" value="Log In"></p>
 	</form>
 </div>
