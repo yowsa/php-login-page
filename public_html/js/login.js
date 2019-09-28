@@ -31,8 +31,10 @@ $(function(){
 		$.post("login.php", $("#login_form").serialize(), function(data){
 			if (data.success){
 				window.location.href = 'logged_in.php';
+			} else if (!data.success){
+				$("#login_message").text(data.message);
 			} else {
-				$("#login_message").text("Login failed! The email or password you entered is incorrect. Please try again.");
+				$("#login_message").text("Something went wrong, please try again.");
 			}
 		});
 
