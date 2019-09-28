@@ -11,9 +11,9 @@ $(function(){
 			window.confirm(data.message);
 			window.location.replace("login.php");
 		} else if (!data.success){
-			$("#create_user_message").text(data.message).fadeOut(4000);
+			$("#create_user_message").text(data.message);
 		} else {
-			$("#create_user_message").text("Something went wrong, please try again.").fadeOut(4000);
+			$("#create_user_message").text("Something went wrong, please try again.");
 
 
 		}
