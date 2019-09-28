@@ -1,36 +1,45 @@
-
-<head>
-	<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
-	<script type="text/javascript" src="js/login.js"></script>
-
-
-</head>
-
 <?php 
 require_once "../base.php";
+require_once "../db_connection.php";
 
-echo "lets create a user shall we" ?>
+// TODO: check so that the passwords provided are the same
+if ($_POST){
+	if ($_POST["password"] == $_POST["confirm_password"]) {
+		$secure_password = $password_security->createSecurePassword($_POST["password"]);
+		$accounts_table->addUser($_POST["email"], $secure_password);
+		$user_creation_sussessful = [
+			"success" => True
+		];
+		header('Content-Type: application/json');
+		echo json_encode($user_creation_sussessful);
+		exit();
+	} 
+
+}
+
+
+require_once "../resources/templates/header.php" 
+?>
+
+
+
+
+
+
+
 
 <div> 
 	<form id="create_user_form" method="post"> 
 		Email: <input type="name" name="email"><p>
 		Password: <input type="password" name="password"><p>
 		Confirm Password: <input type="password" name="confirm_password"><p>
-		<input type="submit" id="create_user_button" name="log in">
+		<input type="submit" id="create_user_button" value="Create User">
 	</form>
 </div>
-
+<div id="create_user_message"></div>
 <a href="login.php">Login</a>
 
 
 
-<?php
-require "../db_connection.php";
-// TODO: check so that the passwords provided are the same
-
-if ($_POST){
-	$accounts_table->addUser($_POST["email"], $_POST["password"]);
-}
 
 
-?>

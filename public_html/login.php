@@ -10,7 +10,7 @@ require_once "../base.php";
 //validateEmail("josefin@fundin.com");
 
 if ($_POST){
-	if ($accounts_table->checkIfPasswordMatches("josefin@fundin.com", "mypassword")){
+	if ($accounts_table->checkIfPasswordMatches($_POST["email"], $_POST["password"])){
 		$_SESSION['user_validated'] = True;
 		$login_sussessful = [
 			"success" => True
@@ -22,27 +22,22 @@ if ($_POST){
 }
 
 
-
-?>
-
-
-
-
-<?php 
 require_once "../resources/templates/header.php" 
-
 ?>
+
+
 
 
 <div> 
 	<form id="login_form" method="post"> 
-		Email: <input id="email" type="email" name="email"><p>
-		Password: <input type="password" name="password">
-		<input type="submit" id="login_button" name="log in">
+		<p>Email: <input id="email" type="email" name="email"></p>
+		<p>Password: <input type="password" name="password"></p>
+		<p><input type="submit" id="login_button" value="Log In"></p>
 	</form>
 </div>
+	<p><div id="login_message"></div></p>
 
-<a href="create_user.php">Create User</a>
+	<p><a href="create_user.php">Create User</a></p>
 
 
 
