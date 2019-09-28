@@ -31,7 +31,6 @@ class AccountsTable {
 		if ($email_details === NULL){
 			return False;
 		}
-		error_log(print_r($email_details["email"], true));
 		return $email_details["email"] == $email;
 	}
 
@@ -48,7 +47,18 @@ class AccountsTable {
 		return password_verify($password, $hashed_password);
 	}
 
-
+	function getName($email){
+		$statement = $this->connection->prepare("SELECT name FROM accounts WHERE email = ?");
+		$statement->bind_param("s", $email);
+		$statement->execute();
+		$db_select_result = $statement->get_result();
+		$account_details =  $db_select_result -> fetch_array();
+		if ($account_details === NULL){
+			return "";
+		}
+		return $account_details["name"];
+		
+	}
 
 
 

@@ -6,6 +6,7 @@ if ($_POST){
 	$email = strtolower($_POST["email"]);
 	$password = $_POST["password"];
 	if ($accounts_table->checkIfPasswordMatches($email, $password)){
+		$_SESSION['user_name'] = $accounts_table->getName($email);
 		$_SESSION['user_validated'] = True;
 		json_responder(True);
 	} else {

@@ -9,7 +9,7 @@ require_once "../resources/templates/header.php"
 
 
 
-<h1> You're logged in</h1>
+<h1> Welcome <?php echo $_SESSION['user_name'] ?>, you're logged in</h1> 
 
 
 
