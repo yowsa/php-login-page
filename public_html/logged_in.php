@@ -14,3 +14,6 @@ require_once "../resources/templates/header.php"
 
 
 <a href="../resources/logout.php">Log Out</a>
+
+
+<?php require_once "../resources/templates/footer.php" ?>

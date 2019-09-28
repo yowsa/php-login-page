@@ -55,6 +55,5 @@ require_once "../resources/templates/header.php"
 <a href="login.php">Go to Login</a>
 
 
-
-
+<?php require_once "../resources/templates/footer.php" ?>
 

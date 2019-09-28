@@ -38,5 +38,4 @@ require_once "../resources/templates/header.php"
 
 
 
-</body>
-</html>
+<?php require_once "../resources/templates/footer.php" ?>
