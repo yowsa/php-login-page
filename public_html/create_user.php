@@ -39,9 +39,9 @@ require_once "../resources/templates/header.php"
 
 <div> 
 	<form id="create_user_form" method="post"> 
-		Email: <input type="name" name="email"><p>
-			Password: <input type="password" name="password"><p>
-				Confirm Password: <input type="password" name="confirm_password"><p>
+		Email: <input type="email" name="email" autocomplete="email"><p>
+			Password: <input type="password" name="password" autocomplete="new-password"><p>
+				Confirm Password: <input type="password" name="confirm_password" autocomplete="new-password"><p>
 					<input type="submit" id="create_user_button" value="Create User">
 				</form>
 			</div>
