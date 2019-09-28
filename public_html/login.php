@@ -2,15 +2,11 @@
 require_once "../db_connection.php";
 require_once "../base.php";
 
-//function validateEmail($email){
-//	var_dump(filter_var($email, FILTER_VALIDATE_EMAIL));
-//};
-
-//validateEmail("josefin.com");
-//validateEmail("josefin@fundin.com");
 
 if ($_POST){
-	if ($accounts_table->checkIfPasswordMatches($_POST["email"], $_POST["password"])){
+	$email = strtolower($_POST["email"]);
+	$password = $_POST["password"];
+	if ($accounts_table->checkIfPasswordMatches($email, $password)){
 		$_SESSION['user_validated'] = True;
 		json_responder(True);
 	} else {

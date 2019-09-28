@@ -42,9 +42,9 @@ class AccountsTable {
 	function addUser($email, $password){
 		$id = $this->getId();
 		$hashed_password = password_hash($password, PASSWORD_BCRYPT);
-	// TODO: Replace with msqli
-		$sql_query = "INSERT INTO accounts (id, email, password) VALUES ('$id', '$email', '$hashed_password')";
-		$this->dbQuery($sql_query);
+		$statement = $this->connection->prepare("INSERT INTO accounts (id, email, password) VALUES (?, ?, ?)");
+		$statement->bind_param("sss", $id, $email, $hashed_password);
+		$statement->execute();
 	}
 
 /*
@@ -59,6 +59,13 @@ class AccountsTable {
 	}
 
 */
+
+	function validateEmail($email){
+		return filter_var($email, FILTER_VALIDATE_EMAIL);
+	}
+
+//validateEmail("josefin.com");
+//validateEmail("josefin@fundin.com");
 
 	function checkIfPasswordMatches($email, $password){
 		$statement = $this->connection->prepare("SELECT password FROM ACCOUNTS WHERE email = ?");

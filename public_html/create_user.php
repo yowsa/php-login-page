@@ -3,8 +3,15 @@ require_once "../base.php";
 require_once "../db_connection.php";
 
 if ($_POST){
-	if ($_POST["password"] == $_POST["confirm_password"]) {
-		$accounts_table->addUser($_POST["email"], $_POST["password"]);
+	$email = strtolower($_POST["email"]);
+	$password = $_POST["password"];
+	$confim_password = $_POST["confirm_password"];
+	if (!$accounts_table->validateEmail($email)){
+		json_responder(False, "Please enter a valid email address.");
+		exit();
+	}
+	if ($password == $confim_password) {
+		$accounts_table->addUser($email, $password);
 		json_responder(True, "User created. You are being redirected to the login page.");
 	} else {
 		json_responder(False, "Your passwords didn't match. Please try again");
