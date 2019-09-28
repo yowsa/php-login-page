@@ -99,51 +99,9 @@ class AccountsTable {
 
 
 
-
-class PasswordSecurity {
-
-	function createSecurePassword($password){
-		return password_hash($password, PASSWORD_BCRYPT);
-	}
-
-/*
-	function verifyPassword($password, $hashed_password){
-		if (password_verify($password, $hashed_password)) {
-			return True;
-		} else {
-			return False;
-		};
-
-
-	}
-
-*/
-
-
-
-
-}
-
-
-
-
-
-
-
-
-
-
-
-
 $database_manager = new DataBaseManager();
 $accounts_table = new AccountsTable($database_manager);
-$password_security = new PasswordSecurity();
 
-
-
-
-
-//createSecurePassword("hejsan");
 
 
 
