@@ -1,8 +1,12 @@
 <?php
 require_once "../resources/base.php";
-require_once "../resources/check_login.php" 
+require_once "../resources/check_login.php";
 
+
+$page_title = 'Logged In';
+require_once "../resources/templates/header.php" 
 ?>
+
 
 
 <h1> You're logged in</h1>
