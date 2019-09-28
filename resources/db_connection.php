@@ -1,5 +1,5 @@
 <?php
-require "resources/config.php";
+require "config.php";
 
 class DataBaseManager {
 
@@ -35,12 +35,9 @@ class AccountsTable {
 		return $this->connection -> query($sql_query);
 	}
 
-	function getId(){
-		return uniqid();
-	}
 
 	function addUser($email, $password){
-		$id = $this->getId();
+		$id = uniqid();
 		$hashed_password = password_hash($password, PASSWORD_BCRYPT);
 		$statement = $this->connection->prepare("INSERT INTO accounts (id, email, password) VALUES (?, ?, ?)");
 		$statement->bind_param("sss", $id, $email, $hashed_password);
@@ -83,6 +80,7 @@ class AccountsTable {
 	}
 
 }
+
 
 
 
