@@ -5,7 +5,6 @@ $(function(){
 			"<span aria-hidden='true'>&times;</span></button>"+
 			"<div class='error_message'></div></div>").appendTo("body");
 		$(".error_message").text($message);
-
 	}
 
 	$("#create_user_button").click(function(event){
@@ -18,18 +17,12 @@ $(function(){
 			window.confirm(data.message);
 			window.location.replace("login.php");
 		} else if (!data.success){
-			$("#create_user_message").text(data.message);
+			alertMessage(data.message);
 		} else {
-			$("#create_user_message").text("Something went wrong, please try again.");
-
-
+			alertMessage("Something went wrong, please try again.");
 		}
-
 	});
-
 });
-
-
 
 
 	$("#login_button").click(function(event){
@@ -44,18 +37,7 @@ $(function(){
 				alertMessage("Something went wrong, please try again.");
 			}
 		});
-
-
 	});
-
-
-
-
-
-
-
-
-
 
 
 
