@@ -13,15 +13,14 @@ class AccountsTable {
 		return $this->connection -> query($sql_query);
 	}
 
-
 	function addUser($email, $password){
 		$id = uniqid();
 		$hashed_password = password_hash($password, PASSWORD_BCRYPT);
-		$statement = $this->connection->prepare("INSERT INTO accounts (id, email, password) VALUES (?, ?, ?)");
+		$statement = $this->connection->prepare(
+			"INSERT INTO accounts (id, email, password) VALUES (?, ?, ?)");
 		$statement->bind_param("sss", $id, $email, $hashed_password);
 		$statement->execute();
 	}
-
 
 	function checkIfEmailExists($email){
 		$statement = $this->connection->prepare("SELECT email FROM accounts WHERE email = ?");
@@ -47,9 +46,7 @@ class AccountsTable {
 		}
 		$hashed_password = $password_details["password"];
 		return password_verify($password, $hashed_password);
-
 	}
-
 }
 
 
@@ -66,6 +63,17 @@ class AccountUtilities {
 	function validatePasswordLength($password){
 		return strlen($password) >= $this->config["password_length_req"];
 	}
+
+	function checkForEmptyField($form_data){
+		$required_fields = $this->config["account_fields_req"];
+		foreach($required_fields as $answer){
+			if (empty($form_data[$answer])){
+				return False;
+			}
+		}
+		return True;
+	}
+
 
 
 }

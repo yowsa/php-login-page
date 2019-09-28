@@ -7,14 +7,19 @@ if ($_POST){
 	$email = strtolower($_POST["email"]);
 	$password = $_POST["password"];
 	$confim_password = $_POST["confirm_password"];
-	if ($accounts_table->checkIfEmailExists($email)){
+	$name = $_POST["name"];
+	if (!$accounts_utilities->checkForEmptyField($_POST)){
+		json_responder(False, "Please fill out all required fields");
+	} else if ($accounts_table->checkIfEmailExists($email)){
 		json_responder(False, "This email is already associated with an existing account.");
 
 	} else if (!$accounts_utilities->validateEmail($email)){
 		json_responder(False, "Please enter a valid email address.");
 
 	} else if (!$accounts_utilities->validatePasswordLength($password)){
-		json_responder(False, "Your password needs to be at least ${config["password_length_req"]} characters long");
+		json_responder(
+			False, 
+			"Your password needs to be at least ${config["password_length_req"]} characters long");
 
 	} else if ($password != $confim_password) {
 		json_responder(False, "Your passwords didn't match. Please try again");
@@ -39,14 +44,15 @@ require_once "../resources/templates/header.php"
 
 <div> 
 	<form id="create_user_form" method="post"> 
-		Email: <input type="email" name="email" autocomplete="email"><p>
-			Password: <input type="password" name="password" autocomplete="new-password"><p>
-				Confirm Password: <input type="password" name="confirm_password" autocomplete="new-password"><p>
-					<input type="submit" id="create_user_button" value="Create User">
-				</form>
-			</div>
-			<div id="create_user_message"></div>
-			<a href="login.php">Go to Login</a>
+		<p>Name: <input type="name" name="name" autocomplete="name"></p>
+		<p>Email: <input type="email" name="email" autocomplete="email"></p>
+		<p>Password: <input type="password" name="password" autocomplete="new-password"></p>
+		<p>Confirm Password: <input type="password" name="confirm_password" autocomplete="new-password"></p>
+		<p><input type="submit" id="create_user_button" value="Create User"></p>
+	</form>
+</div>
+<div id="create_user_message"></div>
+<a href="login.php">Go to Login</a>
 
 
 

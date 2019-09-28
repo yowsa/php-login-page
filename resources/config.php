@@ -9,6 +9,12 @@ $config = [
 		"dbhost" => "localhost",
 	],
 	"password_length_req" => 5,
+	"account_fields_req" => [
+		"name",
+		"email",
+		"password",
+		"confirm_password",
+	],
 ];
 
 
