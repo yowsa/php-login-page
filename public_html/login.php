@@ -31,10 +31,22 @@ require_once "../resources/templates/header.php"
 	</form>
 </div>
 
-
-
-
 <p><a href="create_user.php">Create User</a></p>
+
+<?php
+if (!empty($_SESSION['user_creation_success_message'])) {
+	echo "<div class='alert alert-success fade show'>
+	<button type='button' class='close' data-dismiss='alert' aria-label='Close'>
+	<span aria-hidden='true'>&times;</span></button>
+	<div class='error_message'>";
+	echo $_SESSION['user_creation_success_message'];
+	echo "</div></div>";
+	unset($_SESSION['user_creation_success_message']);
+}
+
+?>
+
+
 
 
 

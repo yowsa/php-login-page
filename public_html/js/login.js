@@ -9,20 +9,17 @@ $(function(){
 
 	$("#create_user_button").click(function(event){
 		event.preventDefault();
-	// TODO: Check if user already exists
-
-	$.post("create_user.php", $("#create_user_form").serialize(), function(data){
-		if (data.success){
-			// TODO: How do I get this message to show after user has been created after loading new page?
-			window.confirm(data.message);
-			window.location.replace("login.php");
-		} else if (!data.success){
-			alertMessage(data.message);
-		} else {
-			alertMessage("Something went wrong, please try again.");
-		}
+		
+		$.post("create_user.php", $("#create_user_form").serialize(), function(data){
+			if (data.success){
+				window.location.replace("login.php");
+			} else if (!data.success){
+				alertMessage(data.message);
+			} else {
+				alertMessage("Something went wrong, please try again.");
+			}
+		});
 	});
-});
 
 
 	$("#login_button").click(function(event){

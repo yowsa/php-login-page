@@ -10,6 +10,7 @@ if ($_POST){
 	$name = $_POST["name"];
 	if (!$accounts_utilities->checkForEmptyField($_POST)){
 		json_responder(False, "Please fill out all required fields");
+
 	} else if ($accounts_table->checkIfEmailExists($email)){
 		json_responder(False, "This email is already associated with an existing account.");
 
@@ -26,8 +27,10 @@ if ($_POST){
 
 	} else {
 		$accounts_table->addUser($email, $password, $name);
-		json_responder(True, "User created. You are being redirected to the login page.");
+		json_responder(True);
+		$_SESSION['user_creation_success_message'] = "Your account has been successfully created. Please log in.";
 	}
+	
 
 	// TODO: Should ideally be in a transaction
 
@@ -51,7 +54,6 @@ require_once "../resources/templates/header.php"
 		<p><input type="submit" class="btn btn-primary btn-lg btn-block" id="create_user_button" value="Create User"></p>
 	</form>
 </div>
-<div id="create_user_message"></div>
 <a href="login.php">Go to Login</a>
 
 
