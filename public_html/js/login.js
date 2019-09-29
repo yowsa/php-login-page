@@ -1,5 +1,5 @@
 $(function(){
-	function alertMessage(message){
+	function showAlertMessage(message){
 		$("<div class='alert alert-danger fade show'>" + 
 			"<button type='button' class='close' data-dismiss='alert' aria-label='Close'>" +
 			"<span aria-hidden='true'>&times;</span></button>" +
@@ -14,9 +14,9 @@ $(function(){
 		if (json_response.success === true){
 			window.location.replace(success_url);
 		} else if (json_response.success === false){
-			alertMessage(json_response.message);
+			showAlertMessage(json_response.message);
 		} else {
-			alertMessage("Something went wrong, please try again.");
+			showAlertMessage("Something went wrong, please try again.");
 		}
 	}
 
@@ -36,6 +36,4 @@ $(function(){
 			$("#login_form").serialize(), 
 			json_response => handleAjaxResponse(json_response, "logged_in.php"));
 	});
-
-
 });
