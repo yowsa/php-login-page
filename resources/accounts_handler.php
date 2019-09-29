@@ -3,6 +3,7 @@ require_once "db_connection.php";
 require_once "config.php";
 
 class AccountsTable {
+	private $database_manager;
 
 	function __construct($database_manager){
 		$this->database_manager = $database_manager;
