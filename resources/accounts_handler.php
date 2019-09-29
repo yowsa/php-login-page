@@ -9,10 +9,6 @@ class AccountsTable {
 		$this->connection = $this->database_manager->getConnection();
 	}
 
-	function dbQuery($sql_query){
-		return $this->connection -> query($sql_query);
-	}
-
 	function addUser($email, $password, $name){
 		$id = uniqid();
 		$hashed_password = password_hash($password, PASSWORD_BCRYPT);
