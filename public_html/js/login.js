@@ -3,7 +3,7 @@ $(function(){
 		$("<div class='alert alert-danger fade show'>"+ 
 			"<button type='button' class='close' data-dismiss='alert' aria-label='Close'>" +
 			"<span aria-hidden='true'>&times;</span></button>"+
-			"<div class='error_message'></div></div>").appendTo("body").delay(3000).fadeOut(1000, () => $(this).remove());
+			"<div class='error_message'></div></div>").appendTo("form.alert-message-reciever").delay(3000).fadeOut(1000, () => $(this).remove());
 		$(".error_message").text($message);
 	}
 
@@ -35,6 +35,7 @@ $(function(){
 			}
 		});
 	});
+
 
 
 
