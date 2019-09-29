@@ -7,7 +7,7 @@ require_once "../resources/templates/header.php"
 
 <div class="wrapper logged-in-wrapper text-center">
 	<div class="jumbotron logged_in_greeting">
-		<h1 display-4> Hello, <?php echo $_SESSION['user_name'] ?>!</h1> 
+		<h1 display-4> Hello, <?= $_SESSION['user_name'] ?>!</h1> 
 		<p class="lead">You're now logged in. </p>
 		<a href="../resources/logout.php" id="log_out" class="btn btn-primary btn-lg">Log Out</a>
 	</div>
