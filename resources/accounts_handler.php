@@ -40,7 +40,7 @@ class AccountsTable {
 		$statement->bind_param("s", $email);
 		$statement->execute();
 		$db_select_result = $statement->get_result();
-		$password_details =  $db_select_result -> fetch_array();
+		$password_details = $db_select_result -> fetch_array();
 		if ($password_details === NULL){
 			return False;
 		}
@@ -61,10 +61,9 @@ class AccountsTable {
 	}
 }
 
-
 class AccountUtilities {
-	function __construct(){
-		global $config;
+
+	function __construct($config){
 		$this->config = $config;
 	}
 
@@ -88,6 +87,6 @@ class AccountUtilities {
 }
 
 $accounts_table = new AccountsTable($database_manager);
-$accounts_utilities = new AccountUtilities();
+$accounts_utilities = new AccountUtilities($config);
 
 ?>

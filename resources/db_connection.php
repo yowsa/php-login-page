@@ -2,9 +2,8 @@
 require_once "config.php";
 
 class DatabaseManager {
-
-	function __construct(){
-		global $config;
+	
+	function __construct($config){
 		$this->dbname = $config["db"]["dbname"];
 		$this->dbusername = $config["db"]["dbusername"];
 		$this->dbpassword = $config["db"]["dbpassword"];
@@ -22,6 +21,6 @@ class DatabaseManager {
 	}
 }
 
-$database_manager = new DatabaseManager();
+$database_manager = new DatabaseManager($config);
 
 ?>
