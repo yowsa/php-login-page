@@ -36,7 +36,6 @@ if ($_POST){
 	exit();
 }
 
-
 $page_title = 'Create New User';
 require_once "../resources/templates/header.php" 
 ?>
