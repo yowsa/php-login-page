@@ -24,7 +24,7 @@ class AccountsTable {
 		$statement->bind_param("s", $email);
 		$statement->execute();
 		$db_select_result = $statement->get_result();
-		$email_details =  $db_select_result -> fetch_array();
+		$email_details =  $db_select_result->fetch_array();
 		if ($email_details === NULL){
 			return False;
 		}
@@ -36,7 +36,7 @@ class AccountsTable {
 		$statement->bind_param("s", $email);
 		$statement->execute();
 		$db_select_result = $statement->get_result();
-		$password_details = $db_select_result -> fetch_array();
+		$password_details = $db_select_result->fetch_array();
 		if ($password_details === NULL){
 			return False;
 		}
@@ -49,7 +49,7 @@ class AccountsTable {
 		$statement->bind_param("s", $email);
 		$statement->execute();
 		$db_select_result = $statement->get_result();
-		$account_details =  $db_select_result -> fetch_array();
+		$account_details =  $db_select_result->fetch_array();
 		if ($account_details === NULL){
 			return "";
 		}
