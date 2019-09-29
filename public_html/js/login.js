@@ -3,13 +3,13 @@ $(function(){
 		$("<div class='alert alert-danger fade show'>"+ 
 			"<button type='button' class='close' data-dismiss='alert' aria-label='Close'>" +
 			"<span aria-hidden='true'>&times;</span></button>"+
-			"<div class='error_message'></div></div>").appendTo("body");
+			"<div class='error_message'></div></div>").appendTo("body").delay(3000).fadeOut(1000, () => $(this).remove());
 		$(".error_message").text($message);
 	}
 
 	$("#create_user_button").click(function(event){
 		event.preventDefault();
-		
+
 		$.post("create_user.php", $("#create_user_form").serialize(), function(data){
 			if (data.success){
 				window.location.replace("login.php");
