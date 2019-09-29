@@ -25,13 +25,14 @@ require_once "../resources/templates/header.php"
 
 <div> 
 	<form id="login_form" method="post"> 
-		<p><label for="email" class="col-sm-2 col-form-label col-form-label-lg">Email:</label><input class="form-control form-control-lg" type="email" name="email" autocomplete="email"></p>
-		<p><label for="password" class="col-sm-2 col-form-label col-form-label-lg">Password:</label><input class="form-control form-control-lg" type="password" name="password" autocomplete="current-password"></p>
-		<p><input type="submit" class="btn btn-primary btn-lg btn-block" id="login_button" value="Log In"></p>
+		<p><input class="form-control form-control-lg" type="email" name="email" autocomplete="email" placeholder="Email address"></p>
+		<p><input class="form-control form-control-lg" type="password" name="password" autocomplete="current-password" placeholder="Password"></p>
+		<p><button type="submit" name="Log In" class="btn btn-primary btn-lg btn-block" id="login_button" value="Log In">Log In</button></p>
+		<p><a href="create_user.php" id="go_to_create_user_page" class="btn btn-outline-primary btn-lg btn-block">Create New User</a></p>
+
 	</form>
 </div>
 
-<p><a href="create_user.php">Create User</a></p>
 
 <?php
 if (!empty($_SESSION['user_creation_success_message'])) {
