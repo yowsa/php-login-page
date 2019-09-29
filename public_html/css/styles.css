@@ -25,6 +25,15 @@ body {
 	margin: auto;
 }
 
+.wrapper {
+	width: 100%;
+	min-height: 100%;  /* Fallback for browsers do NOT support vh unit */
+	min-height: 100vh; /* These two lines are counted as one           */
+	padding: 0 15px 0 15px;
+
+	align-items: center;
+}
+
 .login-wrapper {
 	max-width: 400px;
 	margin: auto;
@@ -42,15 +51,6 @@ body {
 .create-user-wrapper {
 	max-width: 500px;
 	margin: auto;
-}
-
-.wrapper {
-	width: 100%;
-	min-height: 100%;  /* Fallback for browsers do NOT support vh unit */
-	min-height: 100vh; /* These two lines are counted as one :-)       */
-	padding: 0 15px 0 15px;
-
-	align-items: center;
 }
 
 #go_to_login_page, #go_to_create_user_page {

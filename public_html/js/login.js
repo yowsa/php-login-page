@@ -1,9 +1,12 @@
 $(function(){
 	function alertMessage(message){
-		$("<div class='alert alert-danger fade show'>"+ 
+		$("<div class='alert alert-danger fade show'>" + 
 			"<button type='button' class='close' data-dismiss='alert' aria-label='Close'>" +
-			"<span aria-hidden='true'>&times;</span></button>"+
-			"<div class='error_message'></div></div>").appendTo("form.alert-message-reciever").delay(3000).fadeOut(1000, () => $(this).remove());
+			"<span aria-hidden='true'>&times;</span></button>" +
+			"<div class='error_message'></div></div>")
+		.appendTo("form.alert-message-reciever")
+		.delay(3000)
+		.fadeOut(1000, () => $(this).remove());
 		$(".error_message").text(message);
 	}
 
@@ -20,23 +23,19 @@ $(function(){
 	$("#create_user_button").click(function(event){
 		event.preventDefault();
 
-		$.post("create_user.php", $("#create_user_form").serialize(), function(json_response){
-			handleAjaxResponse(json_response, "login.php");
-		});
+		$.post("create_user.php",
+			$("#create_user_form").serialize(), 
+			json_response => handleAjaxResponse(json_response, "login.php"));
 	});
 
 
 	$("#login_button").click(function(event){
 		event.preventDefault();
 
-		$.post("login.php", $("#login_form").serialize(), function(json_response){
-			handleAjaxResponse(json_response, "logged_in.php");
-		});
+		$.post("login.php", 
+			$("#login_form").serialize(), 
+			json_response => handleAjaxResponse(json_response, "logged_in.php"));
 	});
-
-
-
-
 
 
 });
