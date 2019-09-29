@@ -34,7 +34,7 @@ require_once "../resources/templates/header.php"
 		Create New User</a></p>
 
 		<?php
-		if (!empty($_SESSION['user_creation_success_message'])) {
+		if (!empty($_SESSION['user_creation_success_message'])){
 			echo "<div class='alert alert-success fade show'>
 			<button type='button' class='close' data-dismiss='alert' aria-label='Close'>
 			<span aria-hidden='true'>&times;</span></button>
