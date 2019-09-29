@@ -3,7 +3,6 @@ require_once "../resources/base.php";
 require_once "../resources/accounts_handler.php";
 
 if ($_POST){
-	global $config;
 	$email = strtolower($_POST["email"]);
 	$password = $_POST["password"];
 	$confirm_password = $_POST["confirm_password"];
