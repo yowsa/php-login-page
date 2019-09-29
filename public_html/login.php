@@ -23,13 +23,14 @@ require_once "../resources/templates/header.php"
 
 
 
-<div> 
-	<form id="login_form" method="post"> 
+<div class="login-wrapper wrapper"> 
+
+	<form class="alert-message-reciever" id="login_form" method="post"> 
+		<p><h1 class="text-center">Log In</h1></p>
 		<p><input class="form-control form-control-lg" type="email" name="email" autocomplete="email" placeholder="Email address"></p>
 		<p><input class="form-control form-control-lg" type="password" name="password" autocomplete="current-password" placeholder="Password"></p>
 		<p><button type="submit" name="Log In" class="btn btn-primary btn-lg btn-block" id="login_button" value="Log In">Log In</button></p>
 		<p><a href="create_user.php" id="go_to_create_user_page" class="btn btn-outline-primary btn-lg btn-block">Create New User</a></p>
-
 	</form>
 </div>
 

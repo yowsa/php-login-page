@@ -45,16 +45,18 @@ require_once "../resources/templates/header.php"
 
 
 
-<div> 
-	<form id="create_user_form" method="post"> 
-		<p><label for="name" class="col-sm-2 col-form-label col-form-label-lg">Name:</label><input class="form-control form-control-lg" type="name" name="name" autocomplete="name"></p>
-		<p><label for="email" class="col-sm-2 col-form-label col-form-label-lg">Email:</label> <input class="form-control form-control-lg" type="email" name="email" autocomplete="email"></p>
-		<p><label for="password" class="col-sm-2 col-form-label col-form-label-lg">Password:</label><input class="form-control form-control-lg" type="password" name="password" autocomplete="new-password"></p>
-		<p><label for="confirm_password" class="col-sm-2 col-form-label col-form-label-lg">Confirm Password:</label><input class="form-control form-control-lg" type="password" name="confirm_password" autocomplete="new-password"></p>
+<div class="wrapper create-user-wrapper"> 
+	<form id="create_user_form" method="post">
+		<p><h1 class="text-center">Create New User</h1></p> 
+		
+		<p><input class="form-control" type="name" name="name" autocomplete="name" placeholder="Name"></p>
+		<p><input class="form-control" type="email" name="email" autocomplete="email" placeholder="Email address"></p>
+		<p><input class="form-control" type="password" name="password" autocomplete="new-password" placeholder="Password"></p>
+		<p><input class="form-control" type="password" name="confirm_password" autocomplete="new-password" placeholder="Confirm Password"></p>
 		<p><input type="submit" class="btn btn-primary btn-lg btn-block" id="create_user_button" value="Create User"></p>
+		<a href="login.php" id="go_to_login_page" class="btn btn-outline-primary btn-lg btn-block">Go to Log In</a>
 	</form>
 </div>
-<a href="login.php">Go to Login</a>
 
 
 <?php require_once "../resources/templates/footer.php" ?>
