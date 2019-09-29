@@ -7,7 +7,6 @@ function json_responder($bool, $response_message=""){
 
 	header('Content-Type: application/json');
 	echo json_encode($response);
-
 }
 
 ?>

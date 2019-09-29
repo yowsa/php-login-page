@@ -58,11 +58,7 @@ class AccountsTable {
 			return "";
 		}
 		return $account_details["name"];
-		
 	}
-
-
-
 }
 
 
@@ -89,13 +85,7 @@ class AccountUtilities {
 		}
 		return True;
 	}
-
-
-
 }
-
-
-
 
 $accounts_table = new AccountsTable($database_manager);
 $accounts_utilities = new AccountUtilities();

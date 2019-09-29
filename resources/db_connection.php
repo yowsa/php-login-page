@@ -1,7 +1,7 @@
 <?php
 require_once "config.php";
 
-class DataBaseManager {
+class DatabaseManager {
 
 	function __construct(){
 		global $config;
@@ -12,21 +12,16 @@ class DataBaseManager {
 	}
 
 	function getConnection(){
-		$connection = new mysqli($this->dbhost, $this->dbusername, $this->dbpassword, $this->dbname) or die ("Connection failed \n". $connection -> error);
-		return $connection;
+		mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
+		try {
+			$connection = new mysqli($this->dbhost, $this->dbusername, $this->dbpassword, $this->dbname);
+			return $connection;
+		} catch (Exception $e) {
+			exit("Connection failed, please come back later.");
+		}
 	}
-
-
-	//function closeConnection($connection){
-	//$connection -> close();
-//}
-
 }
 
-
-$database_manager = new DataBaseManager();
-
-
-
+$database_manager = new DatabaseManager();
 
 ?>

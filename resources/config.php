@@ -1,6 +1,4 @@
 <?php
-
-
 $config = [
 	"db" => [
 		"dbname" => "logindb",
@@ -16,8 +14,5 @@ $config = [
 		"confirm_password",
 	],
 ];
-
-
-
 
 ?>
