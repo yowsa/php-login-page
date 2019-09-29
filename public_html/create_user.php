@@ -46,7 +46,7 @@ require_once "../resources/templates/header.php"
 
 
 <div class="wrapper create-user-wrapper"> 
-	<form id="create_user_form" method="post">
+	<form class="alert-message-reciever" id="create_user_form" method="post">
 		<p><h1 class="text-center">Create New User</h1></p> 
 		
 		<p><input class="form-control" type="name" name="name" autocomplete="name" placeholder="Name"></p>

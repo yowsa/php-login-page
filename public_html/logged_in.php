@@ -6,14 +6,15 @@ require_once "../resources/check_login.php";
 $page_title = 'Logged In';
 require_once "../resources/templates/header.php" 
 ?>
+<div class="wrapper logged-in-wrapper text-center">
+	<div class="jumbotron logged_in_greeting">
+		<h1 display-4> Hello, <?php echo $_SESSION['user_name'] ?>!</h1> 
+		<p class="lead">You're now logged in. </p>
+		<a href="../resources/logout.php" id="log_out" class="btn btn-primary btn-lg">Log Out</a>
 
+	</div>
+</div>
 
-
-<h1> Welcome <?php echo $_SESSION['user_name'] ?>, you're logged in</h1> 
-
-
-
-<a href="../resources/logout.php">Log Out</a>
 
 
 <?php require_once "../resources/templates/footer.php" ?>

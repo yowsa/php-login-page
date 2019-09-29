@@ -31,27 +31,22 @@ require_once "../resources/templates/header.php"
 		<p><input class="form-control form-control-lg" type="password" name="password" autocomplete="current-password" placeholder="Password"></p>
 		<p><button type="submit" name="Log In" class="btn btn-primary btn-lg btn-block" id="login_button" value="Log In">Log In</button></p>
 		<p><a href="create_user.php" id="go_to_create_user_page" class="btn btn-outline-primary btn-lg btn-block">Create New User</a></p>
+
+		<?php
+		if (!empty($_SESSION['user_creation_success_message'])) {
+			echo "<div class='alert alert-success fade show'>
+			<button type='button' class='close' data-dismiss='alert' aria-label='Close'>
+			<span aria-hidden='true'>&times;</span></button>
+			<div class='error_message'>";
+			echo $_SESSION['user_creation_success_message'];
+			echo "</div></div>";
+			unset($_SESSION['user_creation_success_message']);
+		}
+
+		?>
+
 	</form>
 </div>
-
-
-<?php
-if (!empty($_SESSION['user_creation_success_message'])) {
-	echo "<div class='alert alert-success fade show'>
-	<button type='button' class='close' data-dismiss='alert' aria-label='Close'>
-	<span aria-hidden='true'>&times;</span></button>
-	<div class='error_message'>";
-	echo $_SESSION['user_creation_success_message'];
-	echo "</div></div>";
-	unset($_SESSION['user_creation_success_message']);
-}
-
-?>
-
-
-
-
-
 
 
 <?php require_once "../resources/templates/footer.php" ?>
